@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://drtubyau8vpbl"]
+
+[ext_resource type="Script" uid="uid://dbpupb874mnhk" path="res://Characters/Player/player.gd" id="1_6xdwp"]
+[ext_resource type="Script" uid="uid://cwg3ew5mgjpcj" path="res://Characters/character_mover.gd" id="2_j341n"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ygrrk"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ygrrk"]
+
+[node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_6xdwp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_ygrrk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_ygrrk")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="CharacterMover" type="Node3D" parent="."]
+script = ExtResource("2_j341n")
+jump_force = 50.0
+gravity = 100.0
+max_speed = 10.0
+move_accel = 5.0
